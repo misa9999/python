@@ -31,6 +31,7 @@ class Account(ABC):
             raise ValueError("Just numbers")
 
         self.balance += value
+        self.details()
 
     def details(self):
         print(f"Agency: {self.agency}", end=" ")
@@ -38,12 +39,12 @@ class Account(ABC):
         print(f"Balance: {self.balance}")
 
     @abstractclassmethod
-    def draw(self):
+    def draw(self, value):
         pass
 
 
 class AccountCC(Account):
-    def __init__(self, agency, account_number, balance, limit):
+    def __init__(self, agency, account_number, balance, limit=100):
         super().__init__(agency, account_number, balance)
         self._limit = limit
 
@@ -57,6 +58,7 @@ class AccountCC(Account):
             return
 
         self.balance -= value
+        self.details()
 
 
 class AccountPP(Account):
@@ -66,8 +68,4 @@ class AccountPP(Account):
             return
 
         self.balance -= value
-
-
-cc = AccountCC(agency=11111, account_number=3333, balance=0, limit=500)
-cc.deposit(100)
-cc.details()
+        self.details()
