@@ -4,7 +4,7 @@ import json
 from apiclient.discovery import build
 
 
-api_key = "AIzaSyA9ZUP9xl0JJKlC-RM4lPyl8wDqFKgwdLU"
+api_key = ""
 
 
 youtube = build('youtube', 'v3', developerKey=api_key)
