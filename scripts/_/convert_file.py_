@@ -1,0 +1,25 @@
+import os
+import sys
+import subprocess
+import fnmatch
+
+
+def convert(path):
+    ext = input("Search extension: ")
+    for root, folders, files in os.walk(path):
+        for file_ in files:
+            if not fnmatch.fnmatch(file_, ext):
+                continue
+
+            complete_path = os.path.join(root, file_)
+            filename, file_extension = os.path.splitext(complete_path)
+
+            print("Convert ... to ...")
+            in_file = input("F1: ")
+            out_file = input("F2: ")
+
+            in_filename = filename + "." + in_file
+            out_filename = filename + "." + out_file
+
+            print(in_filename)
+            print(out_filename)
